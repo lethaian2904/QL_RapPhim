@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOXICONS ICON  CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./css/register.css">
+
+    <title>Đăng ký</title>
+</head>
+
+<body>
+
+    <!-- ĐĂNG KÝ  -->
+    <div>
+        <div class="container">
+            <div class="form-box">
+                <form action="" name="Formfill" onsubmit="return validation()">
+                    <h2>Đăng ký</h2>
+                    <p id="result"></p>
+                    <div class="input-box">
+                        <i class='bx bxs-user'></i>
+                        <input id="username" type="text" name="Username" placeholder="Tài khoản">
+                    </div>
+                    <div class="input-box">
+                        <i class='bx bxs-envelope'></i>
+                        <input type="email" name="Email" placeholder="Email">
+                    </div>
+
+                    <div class="input-box">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input id="password" type="password" name="Password" placeholder="Mật khẩu">
+                    </div>
+                    <div class="input-box">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" name="CPassword" placeholder="Nhập lại mật khẩu">
+                    </div>
+                    <div class="button">
+                        <input id="btn-signup" type="submit" value="Đăng ký" class="btn" onclick="validation()">
+                    </div>
+                    <div class="group">
+                        <span><a href="./forgot_password.html">Quên mật khẩu</a></span>
+                        <span><a href="./login.html">Đăng nhập</a></span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- THÔNG BÁO -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- IONIC JS  -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- MAIN JS  -->
+    <script src="./js/register.js"></script>
+</body>
+
+</html>
