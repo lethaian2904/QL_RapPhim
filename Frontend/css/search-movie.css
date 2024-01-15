@@ -1,0 +1,117 @@
+/* Reset CSS */
+body, h1, h2, h3, p, ul, li, div, img {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('');
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url(../img/slide-3-video.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100;
+    width: 100%;
+    color: #fff;
+}
+
+.container-md {
+    max-width: 800px;
+    /* background-color: #333; Đổi màu nền của header */
+    padding: 10px 0; /* Thêm padding cho header */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-right {
+    text-align: right; /* Căn phải cho phần thông tin liên hệ */
+}
+
+.text-white {
+    color: #fff; /* Màu chữ trắng */
+}
+
+.navbar {
+    padding: 0 15px; /* Thêm padding cho navbar */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Điều chỉnh chiều cao tối đa cho logo */
+}
+
+.navbar-toggler {
+    border: none; /* Loại bỏ đường viền nút toggle */
+}
+
+.navbar-nav {
+    list-style: none; /* Loại bỏ chấm đầu dòng của menu */
+}
+
+.nav-item {
+    display: inline-block; /* Hiển thị menu theo chiều ngang */
+    margin-right: 15px; /* Khoảng cách giữa các menu item */
+}
+
+.nav-link {
+    color: #fff; /* Màu chữ trắng */
+    text-decoration: none; /* Loại bỏ gạch chân dưới chữ */
+    font-weight: bold; /* Độ đậm cho chữ */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu chữ */
+}
+
+.nav-link:hover {
+    color: #ffd700; /* Màu chữ khi hover */
+}
+
+/* Container styling */
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styling for each cinema section */
+.CGV, .StarLight, .DCine {
+    margin-top: auto;
+    max-width: 500px;
+}
+
+/* Styling for cinema title */
+.CGV h3, .StarLight h3, .DCine h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Movie card styling */
+.movie-card {
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Movie title styling */
+.movie-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Movie description styling */
+.movie-description {
+    color: #666;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .movie-card {
+        width: 100%;
+    }
+}

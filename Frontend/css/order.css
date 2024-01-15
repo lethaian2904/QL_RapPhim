@@ -1,0 +1,102 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+}
+
+.container-md {
+    background-color: #333; /* Đổi màu nền của header */
+    padding: 10px 0; /* Thêm padding cho header */
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-right {
+    text-align: right; /* Căn phải cho phần thông tin liên hệ */
+}
+
+.text-white {
+    color: #fff; /* Màu chữ trắng */
+}
+
+.navbar {
+    padding: 0 15px; /* Thêm padding cho navbar */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Điều chỉnh chiều cao tối đa cho logo */
+}
+
+.navbar-toggler {
+    border: none; /* Loại bỏ đường viền nút toggle */
+}
+
+.navbar-nav {
+    list-style: none; /* Loại bỏ chấm đầu dòng của menu */
+}
+
+.nav-item {
+    display: inline-block; /* Hiển thị menu theo chiều ngang */
+    margin-right: 15px; /* Khoảng cách giữa các menu item */
+}
+
+.nav-link {
+    color: #fff; /* Màu chữ trắng */
+    text-decoration: none; /* Loại bỏ gạch chân dưới chữ */
+    font-weight: bold; /* Độ đậm cho chữ */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu chữ */
+}
+
+.nav-link:hover {
+    color: #ffd700; /* Màu chữ khi hover */
+}
+
+.order-container {
+    padding: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #fff;
+}
+
+.seat-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 576px) {
+    .navbar-toggler {
+        margin-right: 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

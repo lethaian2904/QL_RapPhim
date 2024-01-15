@@ -1,0 +1,204 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+.container-md {
+    max-width: 800px;
+    height: auto;
+    background-color: #333; /* Đổi màu nền của header */
+    padding: 10px 0; /* Thêm padding cho header */
+    margin-right: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.text-right {
+    text-align: right; /* Căn phải cho phần thông tin liên hệ */
+}
+
+.text-white {
+    color: #fff; /* Màu chữ trắng */
+}
+
+.navbar {
+    padding: 0 15px; /* Thêm padding cho navbar */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Điều chỉnh chiều cao tối đa cho logo */
+}
+
+.navbar-toggler {
+    border: none; /* Loại bỏ đường viền nút toggle */
+}
+
+.navbar-nav {
+    list-style: none; /* Loại bỏ chấm đầu dòng của menu */
+}
+
+.nav-item {
+    display: inline-block; /* Hiển thị menu theo chiều ngang */
+    margin-right: 15px; /* Khoảng cách giữa các menu item */
+}
+
+.nav-link {
+    color: #fff; /* Màu chữ trắng */
+    text-decoration: none; /* Loại bỏ gạch chân dưới chữ */
+    font-weight: bold; /* Độ đậm cho chữ */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu chữ */
+}
+
+.nav-link:hover {
+    color: #ffd700; /* Màu chữ khi hover */
+}
+
+.movie-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.movie-info,
+.movie-schedule,
+.movie-comment {
+    margin-bottom: 20px;
+}
+
+.movie-info{
+    box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
+    padding: 20px;
+    display: flex;
+}
+
+.movie-info img {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.movie-card {
+    text-align: left;
+}
+
+.movie-title {
+    color: #333;
+}
+
+.movie-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.movie-description li {
+    margin-bottom: 10px;
+}
+.movie-info button {
+    border-radius: 8px;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.movie-info button:hover{
+    background-color: #16bcc8;
+}
+
+.movie-schedule{
+    box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
+    padding: 20px;
+}
+
+.movie-schedule label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.showtime h3 {
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.showtime h3::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+
+.showtime h3.collapsed::after {
+    content: "◄";
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.dropdown {
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown div {
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background-color: #1c85b3;
+    transition: background-color 0.3s;
+}
+
+.dropdown div:hover {
+    background-color: #f2f2f2;
+}
+
+.show {
+    display: block;
+}
+
+.movie-comment{
+    box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
+    padding: 20px;
+}
+
+.movie-comment h3 {
+    color: #333;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.show-comment ul {
+    list-style: none;
+    padding: 0;
+}
+
+.show-comment li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}

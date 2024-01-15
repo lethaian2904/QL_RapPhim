@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin phim</title>
+
+    <!-- ANIMATE CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- FONT AWESOME  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- BOOTSTRAP 4  CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- FONT GOOGLE  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,300&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@700&family=Work+Sans:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- VENOBOX CSS  -->
+    <link rel="stylesheet" href="./css/venobox.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./css/order-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<header class="container-md">
+    <p class="text-right text-white mb-0">
+        <i class="fa-solid fa-phone"></i>
+        <span class="mx-3 border-right pr-2">012.345.6789</span>
+    </p>
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="#">
+            <img src="./img/logo.svg" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#movieNavBar"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="fa fa-bars"></i>
+            </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="movieNavBar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active line">
+                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item line">
+                    <a class="nav-link" href="#">WHAT'S ON</a>
+                </li>
+                <li class="nav-item line">
+                    <a class="nav-link" href="#">SHORTCODES</a>
+                </li>
+                <li class="nav-item line">
+                    <a class="nav-link" href="#">NEWS</a>
+                </li>
+                <li class="nav-item line">
+                    <a class="nav-link" href="#">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="order-detail-container">
+        <h2>Thông tin thanh toán</h2>
+        <div id="payment-details" class="payment-container">
+            <!-- Display payment details here -->
+            <p id="user_id">Người đặt: </p>
+            <p id="order_date">Ngày đặt: </p>
+            <p id="cinema_id">Tên phim: </p>
+            <p id="promotion_id">Voucher đã áp dụng: </p>
+            <p id="total_amount">Tổng cộng: 0đ</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var userNameElement = document.getElementById("user_id");
+            var orderDateElement = document.getElementById("order_date");
+            var movieNameElement = document.getElementById("cinema_id");
+            var voucherCodeElement = document.getElementById("promotion_id");
+            var totalAmountElement = document.getElementById("total_amount");
+
+            // Use the same calculateTotal function from your original script
+            function calculateTotal() {
+                var ticketPrice = 100000; // Giá vé 100,000đ
+                var numberOfTickets = 2; // Số lượng vé
+    
+                // Giảm giá từ voucher (nếu có)
+                var discountFromVoucher = 20000; // Giảm giá 20,000đ
+    
+                // Tính tổng cộng
+                var totalAmount = ticketPrice * numberOfTickets - discountFromVoucher;
+    
+                // Lấy thông tin từ người dùng và hiển thị trên giao diện
+                var userName = "John Doe"; // Thay bằng thông tin người đặt thực tế
+                var orderDate = new Date().toLocaleString(); // Lấy ngày và giờ hiện tại
+                var movieName = "Tên phim 1"; // Thay bằng thông tin phim thực tế
+                var voucherCode = "ABC123"; // Thay bằng thông tin voucher thực tế
+    
+                userNameElement.textContent = "Người đặt: " + userName;
+                orderDateElement.textContent = "Ngày đặt: " + orderDate;
+                movieNameElement.textContent = "Tên phim: " + movieName;
+                voucherCodeElement.textContent = "Voucher đã áp dụng: " + voucherCode;
+    
+                // Cập nhật giá trị trong phần tổng cộng trên giao diện
+                totalAmountElement.textContent = "Tổng cộng: " + totalAmount + "đ";
+            }
+
+            // Trigger the calculation when the page loads
+            calculateTotal();
+        });
+    </script>
+
+    <!-- Add your footer content here if needed -->
+</body>
+
+
+</html>
