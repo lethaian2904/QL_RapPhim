@@ -23,4 +23,5 @@ public class SeatController {
     public List<Seat> getTicketTypes() {
         return seatService.getAllSeats();
     }
+
 }

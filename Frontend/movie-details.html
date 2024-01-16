@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,9 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="./css/movie-details.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <header class="container-md">
@@ -76,8 +79,8 @@
         <div class="movie-info">
             <img src="./img/Avengers_Endgame_bia_teaser.jpg" alt="image_path">
             <div class="movie-card">
-                 <h2 id="movie-title">Avengers: Endgame</h2>
-                 <div class="movie-description">
+                <h2 id="movie-title">Avengers: Endgame</h2>
+                <div class="movie-description">
                     <p><strong>Tên Phim:</strong> <span id="title"></span></p>
                     <p><strong>Đạo diễn:</strong> <span id="director"></span></p>
                     <p><strong>Năm sản xuất:</strong> <span id="release-year"></span></p>
@@ -85,80 +88,93 @@
                     <p><strong>Mô tả:</strong> <span id="description"></span></p>
                     <button class="play-button">&#9654 Trailer</button>
                 </div>
-             </div>
-        </div>
-    <!-- Lịch chiếu bộ phim-->
-    <div class="movie-schedule">
-        <label for="">Ngày chiếu: </label>
-        <select style="width: auto; font-size: 16px" name="Date" id="date">
-            <option value="">26/04/2019</option>
-            <option value="">27/04/2019</option>
-        </select>
-
-        <label for=""><br>Rạp chiếu: </label>
-        <div class="showtime">
-            <h3 onclick="toggleDropdown(this)">Dcine</h3>
-            
-            <div class="dropdown">
-                <div onclick="selectTime(this)">10:00 AM</div>
-                <div onclick="selectTime(this)">1:30 PM</div>
-                <div onclick="selectTime(this)">4:45 PM</div>
             </div>
         </div>
+        <!-- Lịch chiếu bộ phim-->
+        <div class="movie-schedule">
+            <label for="">Ngày chiếu: </label>
+            <select style="width: auto; font-size: 16px" name="Date" id="date">
+                <option value="">26/04/2019</option>
+                <option value="">27/04/2019</option>
+            </select>
 
-        <div class="showtime">
-            <h3 onclick="toggleDropdown(this)">CGV</h3>
-            <div class="dropdown">
-                <div onclick="selectTime(this)">11:15 AM</div>
-                <div onclick="selectTime(this)">3:00 PM</div>
-                <div onclick="selectTime(this)">6:30 PM</div>
+            <label for=""><br>Rạp chiếu: </label>
+            <div class="showtime">
+                <h3 onclick="toggleDropdown(this)">Dcine</h3>
+
+                <div class="dropdown">
+                    <div onclick="selectTime(this)">10:00 AM</div>
+                    <div onclick="selectTime(this)">1:30 PM</div>
+                    <div onclick="selectTime(this)">4:45 PM</div>
+                </div>
             </div>
-        </div>
 
-        <div class="showtime">
-            <h3 onclick="toggleDropdown(this)">StarLight</h3>
-            <div class="dropdown">
-                <div onclick="selectTime(this)">12:45 PM</div>
-                <div onclick="selectTime(this)">5:15 PM</div>
-                <div onclick="selectTime(this)">8:45 PM</div>
-                <!-- Thêm thời gian chiếu khác nếu cần -->
+            <div class="showtime">
+                <h3 onclick="toggleDropdown(this)">CGV</h3>
+                <div class="dropdown">
+                    <div onclick="selectTime(this)">11:15 AM</div>
+                    <div onclick="selectTime(this)">3:00 PM</div>
+                    <div onclick="selectTime(this)">6:30 PM</div>
+                </div>
             </div>
+
+            <div class="showtime">
+                <h3 onclick="toggleDropdown(this)">StarLight</h3>
+                <div class="dropdown">
+                    <div onclick="selectTime(this)">12:45 PM</div>
+                    <div onclick="selectTime(this)">5:15 PM</div>
+                    <div onclick="selectTime(this)">8:45 PM</div>
+                    <!-- Thêm thời gian chiếu khác nếu cần -->
+                </div>
+            </div>
+
+            <script>
+                function toggleDropdown(element) {
+                    var dropdown = element.nextElementSibling;
+                    dropdown.classList.toggle("show");
+                    element.classList.toggle("collapsed", !dropdown.classList.contains("show"));
+                }
+
+                function selectTime(element) {
+                    var selectedTime = element.textContent;
+                    console.log("Selected Time: " + selectedTime);
+                    // Thực hiện các hành động cần thiết khi chọn thời gian
+                }
+
+                document.getElementById('movie-title').innerText = 'Inception';
+                document.getElementById('director').innerText = 'Christopher Nolan';
+                document.getElementById('release-year').innerText = '2010';
+                document.getElementById('genre').innerText = 'Sci-Fi, Action';
+                document.getElementById('description').innerText = 'Inception is a mind-bending science fiction thriller film directed by Christopher Nolan, starring Leonardo DiCaprio. The movie explores the concept of dreams and features stunning visual effects.';
+
+
+
+
+                window.selectTime = function () {
+
+                    window.location.href = "./datve.html";
+
+                };
+
+
+
+            </script>
         </div>
-
-        <script>
-            function toggleDropdown(element) {
-                var dropdown = element.nextElementSibling;
-                dropdown.classList.toggle("show");
-                element.classList.toggle("collapsed", !dropdown.classList.contains("show"));
-            }
-
-            function selectTime(element) {
-                var selectedTime = element.textContent;
-                console.log("Selected Time: " + selectedTime);
-                // Thực hiện các hành động cần thiết khi chọn thời gian
-            }
-
-            document.getElementById('movie-title').innerText = 'Inception';
-            document.getElementById('director').innerText = 'Christopher Nolan';
-            document.getElementById('release-year').innerText = '2010';
-            document.getElementById('genre').innerText = 'Sci-Fi, Action';
-            document.getElementById('description').innerText = 'Inception is a mind-bending science fiction thriller film directed by Christopher Nolan, starring Leonardo DiCaprio. The movie explores the concept of dreams and features stunning visual effects.';
-        </script>
-    </div>
 
 
         <!-- Đánh giá bộ phim -->
-            <div class="movie-comment">
-                <h3>Đánh giá</h3>
-                <input type="text" placeholder="Viết bình luận ...">
-                <button>Gửi</button>
-                <div class="show-comment">
-                    <ul>
-                        <li><span>Người dùng: </span>Hoàng Văn A</li>
-                    </ul>
-                </div>
+        <div class="movie-comment">
+            <h3>Đánh giá</h3>
+            <input type="text" placeholder="Viết bình luận ...">
+            <button>Gửi</button>
+            <div class="show-comment">
+                <ul>
+                    <li><span>Người dùng: </span>Hoàng Văn A</li>
+                </ul>
             </div>
-</div>
+        </div>
+    </div>
 
 </body>
+
 </html>

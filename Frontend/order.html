@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,9 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="./css/order.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -82,7 +85,8 @@
             <p id="total_amount">Tổng cộng: 0đ</p>
             <button onclick="displayInformation()">Hiển thị thông tin</button>
             <button onclick="calculateTotal()">Thanh toán</button>
-            <p id="payment_confirmation" style="display: none; color: green; font-weight: bold;">Đã thanh toán thành công!</p>
+            <p id="payment_confirmation" style="display: none; color: green; font-weight: bold;">Đã thanh toán thành
+                công!</p>
         </div>
     </div>
 
@@ -122,7 +126,12 @@
 
             // Display the payment confirmation message
             confirmationElement.style.display = "block";
+
+            window.location.href = "./order-details.html";
+
+
         }
     </script>
 </body>
+
 </html>
