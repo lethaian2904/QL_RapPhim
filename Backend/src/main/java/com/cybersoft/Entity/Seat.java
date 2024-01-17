@@ -12,17 +12,30 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cinema_id", nullable = false)
-    private Cinema cinema;
-
-    @Column(name = "row_numberr", nullable = false)
-    private Integer rowNumberr;
+    @Column(name = "cinema_id", nullable = false)
+    private Long cinemaId;
 
     @Column(name = "seat_number", nullable = false)
     private Integer seatNumber;
 
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
+
+    @Column(name = "row_numberr", nullable = false)
+    private Integer rowNumber;
+
+    // Constructors, getters, setters, and other methods as needed
+
+    // Default constructor
+    public Seat() {
+    }
+
+    // Parameterized constructor
+    public Seat(Long cinemaId, Integer seatNumber, Boolean isAvailable, Integer rowNumber) {
+        this.cinemaId = cinemaId;
+        this.seatNumber = seatNumber;
+        this.isAvailable = isAvailable;
+        this.rowNumber = rowNumber;
+    }
 }
 

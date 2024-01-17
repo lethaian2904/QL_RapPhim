@@ -12,11 +12,13 @@ import java.util.Optional;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
+    Optional<Movie> findById(Long id);
+
+
     @Query("SELECT DISTINCT m.genre FROM Movie m")
     List<String> findAllGenres();
 
     List<Movie> findByTitleContaining(String keyword);
 
-    Optional<Movie> findById(Long userId);
 }
 

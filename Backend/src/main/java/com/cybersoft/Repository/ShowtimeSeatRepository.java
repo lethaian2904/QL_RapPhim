@@ -13,6 +13,6 @@ import java.util.List;
 public interface ShowtimeSeatRepository extends JpaRepository<ShowtimeSeat, Long> {
 
     // Truy vấn tùy chỉnh để lấy danh sách ghế trống cho một lịch chiếu cụ thể
-    @Query("SELECT s.seat FROM ShowtimeSeat s WHERE s.showtime.id = :showtimeId AND s.seat.isAvailable = true")
+    @Query("SELECT s.seat FROM ShowtimeSeat s WHERE s.showtime.id = :showtimeId AND s.seat.isAvailable = false")
     List<Seat> findAvailableSeatsByShowtimeId(@Param("showtimeId") Long showtimeId);
 }

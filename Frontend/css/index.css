@@ -752,6 +752,99 @@ footer a:hover {
     .line.active::after {
         width: 0;
     }
+/* Thêm CSS cho phần mới (section.imageSection) */
+/* CSS cho phần imageSection */
+/* CSS cho phần imageSection */
+.imageSection {
+    margin-top: 20px;
+}
+
+.imageSection a {
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.imageSection img {
+    width: 100%;
+    height: 100%; /* Đặt chiều cao và chiều rộng của hình ảnh là 100% */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+}
+
+.imageSection p {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+/* CSS for links below images */
+.imageSection .row a {
+    display: block; /* Để thẻ 'a' trở thành một khối để có thể tùy chỉnh chiều rộng và chiều cao */
+    text-align: center; /* Canh giữa nội dung trong thẻ 'a' */
+    margin-top: 10px; /* Khoảng cách từ trên xuống giữa các thẻ 'a' và ảnh */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ 'a' */
+    color: #333; /* Màu chữ cho thẻ 'a' */
+    font-size: 16px; /* Cỡ chữ cho thẻ 'a' */
+}
+
+/* Hover effect on links */
+.imageSection .row a:hover {
+    color: #ff5733; /* Màu chữ khi di chuột qua thẻ 'a' */
+}
+
+
+/* Điều chỉnh CSS cho phần movieCarousel__overlay */
+.movieCarousel__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Điều chỉnh mức độ đục của overlay */
+}
+
+.movieCarousel .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.movieCarousel__trailer {
+    margin-top: 20px;
+}
+
+.movieCarousel__trailer span {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Thêm CSS cho phần footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.footer__copyright {
+    text-align: center;
+    margin-top: 20px;
+}
 
     /* HEADER  */
     header .navbar-toggler {
@@ -772,3 +865,40 @@ footer a:hover {
     }
 
 }
+
+section {
+    background-color: #f8f8f8; /* Set a background color for better visibility */
+    padding: 20px; /* Add some padding for spacing */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Set a background color for the form container */
+    padding: 20px; /* Add padding for spacing within the form container */
+    border-radius: 10px; /* Add rounded corners to the form container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.detail {
+    font-size: 30px;
+}
+
+.datve {
+    width: 120px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    cursor: pointer;
+}
+
+.datve:hover {
+    background-color: #fbbd61;
+    border: 1px solid #fbbd61;
+    transition: all .5s;
+}
+

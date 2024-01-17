@@ -193,30 +193,10 @@
     </section>
 
     <!-- SEARCH -->
-    <section id="search">
-        <div class="find">
-            <form>
-                <div class="form-group form-row">
-                    <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                        <input type="email" class="form-control" id="staticEmail2" placeholder="Tìm kiếm ...">
-                    </div>
-                    <div class="col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2">
-                        <button type="submit" class="btn">SUBMIT</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="list">
-            <div class="picture">
-                <img src="https://th.bing.com/th/id/OIP.Yl6pOMrA_2icev-bgbMySwHaK-?rs=1&pid=ImgDetMain"
-                    alt="mô tả nội dung của ảnh">
-            </div>
-            <div class="">
-                <h3>Bố già</h3>
-                <p style="font-size: 18px;">13h00</p>
-            </div>
-            <div class="detail">
-
+    <section>
+           <div class="form-container">
+             
+            <form class="detail">
                 <div class="menu">
                     <div class="label">
                         <label for="" style="margin-right: 70px;">Bắp</label>
@@ -227,152 +207,14 @@
                         <button class="plus-btn" type="button" name="button">
                             <i class="fas fa-plus"></i>
                         </button>
-                        <div style="display: inline;">
-                            <input type="radio" id="option1" name="option" value="option1"
-                                style="width: 18px; height: 18px; margin: 10px;">
-                            <label for="option1">Vừa</label>
-                            <input type="radio" id="option2" name="option" value="option2"
-                                style="width: 18px; height: 18px; margin: 10px;">
-                            <label for="option2">Lớn</label>
-                        </div>
-
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 60px;">Nước</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div style="display: inline;">
-                            <input type="radio" id="option3" name="option1" value="option"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option3">Vừa</label>
-                            <input type="radio" id="option4" name="option1" value="option"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option4">Lớn</label>
-                        </div>
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 20px;">Số lượng vé</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 14px;">Tổng</label>
-                        <input type="text"
-                            style="width: 155px; height: 30px; margin-left: 12%; border-radius: 0; border: 0.5px solid black;">
-                        <p style="display: inline; margin-left: 8%;">vnd</p>
-                    </div>
-                </div>
-                <button class="datve" onclick="search()">Đặt vé</button>
-            </div>
-
-
-
-            <div class="picture">
-                <img src="https://th.bing.com/th/id/OIP.Yl6pOMrA_2icev-bgbMySwHaK-?rs=1&pid=ImgDetMain"
-                    alt="mô tả nội dung của ảnh">
-            </div>
-            <div class="">
-                <h3>Bố già</h3>
-                <p style="font-size: 18px;">13h00</p>
-            </div>
-            <div class="detail">
-
-                <div class="menu">
-                    <div class="label">
-                        <label for="" style="margin-right: 70px;">Bắp</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div style="display: inline;">
-                            <input type="radio" id="option1" name="option2" value="option1"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option1">Vừa</label>
-                            <input type="radio" id="option2" name="option2" value="option2"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option2">Lớn</label>
-                        </div>
-
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 60px;">Nước</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div style="display: inline;">
-                            <input type="radio" id="option1" name="option3" value="option1"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option1">Vừa</label>
-                            <input type="radio" id="option2" name="option3" value="option2"
-                                style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
-                            <label for="option2">Lớn</label>
-                        </div>
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 20px;">Số lượng vé</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                    <div class="label">
-                        <label for="" style="margin-right: 14px;">Tổng</label>
-                        <input type="text"
-                            style="width: 155px; height: 30px; margin-left: 12%; border-radius: 0; border: 0.5px solid black;">
-                        <p style="display: inline; margin-left: 8%;">vnd</p>
-                    </div>
-                </div>
-                <button class="datve" onclick="search()">Đặt vé</button>
-            </div>
-
-            <div class="picture">
-                <img src="https://th.bing.com/th/id/OIP.Yl6pOMrA_2icev-bgbMySwHaK-?rs=1&pid=ImgDetMain"
-                    alt="mô tả nội dung của ảnh">
-            </div>
-            <div class="">
-                <h3>Bố già</h3>
-                <p style="font-size: 18px;">13h00</p>
-            </div>
-            <div class="detail">
-
-                <div class="menu">
-                    <div class="label">
-                        <label for="" style="margin-right: 70px;">Bắp</label>
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div style="display: inline;">
+                        <!-- <div style="display: inline;">
                             <input type="radio" id="option1" name="option4" value="option1"
                                 style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
                             <label for="option1">Vừa</label>
                             <input type="radio" id="option2" name="option4" value="option2"
                                 style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
                             <label for="option2">Lớn</label>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="label">
@@ -384,14 +226,14 @@
                         <button class="plus-btn" type="button" name="button">
                             <i class="fas fa-plus"></i>
                         </button>
-                        <div style="display: inline;">
+                        <!-- <div style="display: inline;">
                             <input type="radio" id="option1" name="option5" value="option1"
                                 style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
                             <label for="option1">Vừa</label>
                             <input type="radio" id="option2" name="option5" value="option2"
                                 style="width: 18px; height: 18px; margin: 5px; margin: 10px;">
                             <label for="option2">Lớn</label>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="label">
                         <label for="" style="margin-right: 20px;">Số lượng vé</label>
@@ -410,9 +252,9 @@
                         <p style="display: inline; margin-left: 8%;">vnd</p>
                     </div>
                 </div>
-                <button class="datve" onclick="search()">Đặt vé</button>
-            </div>
-        </div>
+            </form>
+            <button class="datve" onclick="search()">Đặt vé</button>
+           </div>
     </section>
 
 

@@ -77,7 +77,7 @@
     <div class="movie-container">
         <!-- Thông tin bộ phim  -->
         <div class="movie-info">
-            <img src="./img/Avengers_Endgame_bia_teaser.jpg" alt="image_path">
+            <img id="movie-image" alt="image_path">
             <div class="movie-card">
                 <h2 id="movie-title">Avengers: Endgame</h2>
                 <div class="movie-description">
@@ -100,65 +100,90 @@
 
             <label for=""><br>Rạp chiếu: </label>
             <div class="showtime">
-                <h3 onclick="toggleDropdown(this)">Dcine</h3>
-
-                <div class="dropdown">
+                <h3 onclick="toggleDropdown(this, 'dcine-dropdown')">Dcine</h3>
+                <div id="dcine-dropdown" class="dropdown">
                     <div onclick="selectTime(this)">10:00 AM</div>
                     <div onclick="selectTime(this)">1:30 PM</div>
                     <div onclick="selectTime(this)">4:45 PM</div>
                 </div>
             </div>
-
+            
             <div class="showtime">
-                <h3 onclick="toggleDropdown(this)">CGV</h3>
-                <div class="dropdown">
+                <h3 onclick="toggleDropdown(this, 'cgv-dropdown')">CGV</h3>
+                <div id="cgv-dropdown" class="dropdown">
                     <div onclick="selectTime(this)">11:15 AM</div>
                     <div onclick="selectTime(this)">3:00 PM</div>
                     <div onclick="selectTime(this)">6:30 PM</div>
                 </div>
             </div>
-
+            
             <div class="showtime">
-                <h3 onclick="toggleDropdown(this)">StarLight</h3>
-                <div class="dropdown">
+                <h3 onclick="toggleDropdown(this, 'starlight-dropdown')">StarLight</h3>
+                <div id="starlight-dropdown" class="dropdown">
                     <div onclick="selectTime(this)">12:45 PM</div>
                     <div onclick="selectTime(this)">5:15 PM</div>
                     <div onclick="selectTime(this)">8:45 PM</div>
-                    <!-- Thêm thời gian chiếu khác nếu cần -->
                 </div>
             </div>
+            
 
             <script>
-                function toggleDropdown(element) {
-                    var dropdown = element.nextElementSibling;
-                    dropdown.classList.toggle("show");
-                    element.classList.toggle("collapsed", !dropdown.classList.contains("show"));
+                document.addEventListener('DOMContentLoaded', function () {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var imageId = urlParams.get('id');
+        
+                    if (imageId) {
+                        // Lấy thẻ img và cập nhật đường dẫn ảnh dựa trên giá trị của id
+                        var movieImage = document.getElementById('movie-image');
+                        switch (imageId) {
+                            case '1':
+                                // Thay đổi đường dẫn ảnh nếu imageId là 1
+                                movieImage.src = '/Frontend/img/tải xuống.jpg';
+                                break;
+                            case '2':
+                                // Thay đổi đường dẫn ảnh nếu imageId là 2
+                                movieImage.src = '/Frontend/img/tải xuống (1).jpg';
+                                break;
+                            // Thêm các trường hợp khác nếu cần
+                            default:
+                                // Xử lý khi không có trường hợp nào trùng khớp
+                                break;
+                }
+        
+                        var apiUrl = 'http://localhost:8080/api/movie-details/' + imageId;
+        
+                        // fetch(apiUrl)
+                        //     .then(response => response.json())
+                        //     .then(movieDetails => {
+                        //         // Xử lý thông tin chi tiết của bộ phim ở đây
+                        //         console.log(movieDetails);
+                        //         document.getElementById('movie-title').innerText = movieDetails.title;
+                        //         // ...
+                        //     })
+                        //     .catch(error => {
+                        //         console.error('Error fetching movie details:', error);
+                        //     });
+                    }
+                });
+
+                function toggleDropdown(element, dropdownId) {
+                    var dropdown = document.getElementById(dropdownId);
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    } else {
+                        dropdown.style.display = 'block';
+                    }
                 }
 
-                function selectTime(element) {
-                    var selectedTime = element.textContent;
-                    console.log("Selected Time: " + selectedTime);
-                    // Thực hiện các hành động cần thiết khi chọn thời gian
+                function selectTime(selectedTime) {
+                    // Lấy giờ được chọn
+                    var selectedHour = selectedTime.innerText;
+
+                    // Chuyển hướng đến trang order.html với thời gian đã chọn
+                    window.location.href = 'datve.html?selectedTime=' + encodeURIComponent(selectedHour);
                 }
-
-                document.getElementById('movie-title').innerText = 'Inception';
-                document.getElementById('director').innerText = 'Christopher Nolan';
-                document.getElementById('release-year').innerText = '2010';
-                document.getElementById('genre').innerText = 'Sci-Fi, Action';
-                document.getElementById('description').innerText = 'Inception is a mind-bending science fiction thriller film directed by Christopher Nolan, starring Leonardo DiCaprio. The movie explores the concept of dreams and features stunning visual effects.';
-
-
-
-
-                window.selectTime = function () {
-
-                    window.location.href = "./datve.html";
-
-                };
-
-
-
             </script>
+            
         </div>
 
 
