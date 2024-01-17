@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SeatService {
@@ -19,5 +20,18 @@ public class SeatService {
 
     public List<Seat> getAllSeats() {
         return seatRepository.findAll();
+    }
+
+    public Seat updateSeatAvailability(Long seatId) {
+        Optional<Seat> optionalSeat = seatRepository.findById(seatId);
+
+        if (optionalSeat.isPresent()) {
+            Seat seat = optionalSeat.get();
+            seat.setIsAvailable(true);  // Assuming 1 represents true for availability
+            return seatRepository.save(seat);
+        } else {
+            // Handle the case when the seat with the given ID is not found
+            throw new RuntimeException("Seat with ID " + seatId + " not found");
+        }
     }
 }

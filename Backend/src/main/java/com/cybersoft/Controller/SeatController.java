@@ -3,9 +3,7 @@ package com.cybersoft.Controller;
 import com.cybersoft.Entity.Seat;
 import com.cybersoft.Service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,11 @@ public class SeatController {
     @GetMapping
     public List<Seat> getTicketTypes() {
         return seatService.getAllSeats();
+    }
+
+    @PutMapping("/{seatId}/updateAvailability")  // Define the path for updating availability
+    public Seat updateSeatAvailability(@PathVariable Long seatId) {
+        return seatService.updateSeatAvailability(seatId);
     }
 
 }
