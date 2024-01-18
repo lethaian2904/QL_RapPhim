@@ -63,14 +63,14 @@
                     <li class="nav-item line">
                         <a class="nav-link" href="#">RẠP PHIM</a>
                     </li>
-                    <!-- <li class="nav-item line">
-                        <a class="nav-link" href="#">LỊCH CHIẾU</a> -->
+                    <li class="nav-item line">
+                        <a class="nav-link" href="#">LỊCH CHIẾU</a>
                     </li>
                     <li class="nav-item line">
-                        <a class="nav-link" href="/Frontend/promotions.html">ƯU ĐÃI</a>
+                        <a class="nav-link" href="#">ƯU ĐÃI</a>
                     </li>
                     <li class="nav-item line">
-                        <a class="nav-link" href="/Frontend/capnhatthongtin.html">Tài khoản</a>
+                        <a class="nav-link" href="#">THÀNH VIÊN</a>
                     </li>
                 </ul>
             </div>
@@ -91,16 +91,16 @@
             <div class="collapse navbar-collapse" id="movieNavBar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active line">
-                        <a class="nav-link" href="#">TRANG CHỦ <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="./index.html">TRANG CHỦ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item line">
-                        <a class="nav-link" href="#">RẠP PHIM</a>
-                    </li>
-                    <!-- <li class="nav-item line">
-                        <a class="nav-link" href="#">LỊCH CHIẾU</a> -->
+                        <a class="nav-link" href="./">RẠP PHIM</a>
                     </li>
                     <li class="nav-item line">
-                        <a class="nav-link" href="/Frontend/promotions.html">ƯU ĐÃI</a>
+                        <a class="nav-link" href="./lichchieu.html">LỊCH CHIẾU</a>
+                    </li>
+                    <li class="nav-item line">
+                        <a class="nav-link" href="./promotions.html">ƯU ĐÃI</a>
                     </li>
                     <li class="nav-item line">
                         <a class="nav-link" href="/Frontend/capnhatthongtin.html">THÀNH VIÊN</a>
@@ -167,39 +167,217 @@
                         </div>
                     </div>
                 </div>
-                <!-- New Section -->
-                <div class="imageSection">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Cột 1 -->
-                            <div class="col-md-6">
-                                <a href="/Frontend/movie-details.html?id=1" class="venobox">
-                                    <img src="/Frontend/img/tải xuống.jpg" alt="Image 1">
-                                </a>
-                                <a href="/Frontend/movie-details.html?id=1">Bố già</a>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./img/hero-3.jpg" alt="Third slide">
+                    <div class="movieCarousel__overlay">
+                    </div>
+                    <div class="container carousel-caption d-none d-md-block">
+                        <div class="col-9">
+                            <p class="animate__animated animate__fadeInDown">ACTION, ADVENTURE, FANTASY</p>
+                            <h2 class="animate__animated animate__fadeInDown">End of the World: Part III</h2>
+                            <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Alias voluptas tempora esse
+                                maiores
+                                quasi eius, laudantium ratione earum dicta corrupti.</p>
+                            <div class="movieCarousel__trailer animate__animated animate__fadeInUp">
+                                <span>PG</span>
+                                <button>
+                                    <span>
+                                        <i class="fa fa-play"></i>
+                                        PLAY TRAILER
+                                    </span>
+                                </button>
                             </div>
-                
-                            <!-- Cột 2 -->
-                            <div class="col-md-6">
-                                <a href="/Frontend/movie-details.html?id=2" class="venobox">
-                                    <img src="/Frontend/img/tải xuống (1).jpg" alt="Image 2">
-                                </a>
-                                <a href="/Frontend/movie-details.html?id=2">Tom & Jerry</a>
-                            </div>
-                            
-                            <!-- Thêm cột cho các hình ảnh và văn bản khác nếu cần -->
                         </div>
                     </div>
-                </div>
-                
-
-                
                 </div>
             </div>
         </div>
     </section>
 
-    
+    <!-- Danh sách -->
+    <section class="newIn section">
+        <div class="container">
+            <h2 class="title">Danh sách phim</h2>
+            <div class="newIn__content">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="newIn__img">
+                            <img class="img-fluid" src="./img/bogia.jpg" alt="">
+                            <div class="newIn__overlay"></div>
+                            <div class="newIn__play">
+                                <div>
+                                    <a href="/Frontend/movie-details.html?id=1"><i class="fa fa-play"></i></a>
+                                    <a href="#">read more</a>
+                                    <p class="date">Released: 7 Mar, 2017</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newIn__title">
+                            <h3>Bố già</h3>
+                            <div>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="newIn__img">
+                            <img class="img-fluid" src="./img/tom&jerry.jpg" alt="">
+                            <div class="newIn__overlay"></div>
+                            <div class="newIn__play">
+                                <div>
+                                    <a href="/Frontend/movie-details.html?id=2"><i class="fa fa-play"></i></a>
+                                    <a href="#">read more</a>
+                                    <p class="date">Released: 7 Mar, 2017</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newIn__title">
+                            <h3>Tom & Jejjy</h3>
+                            <div>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="newIn__img">
+                            <img class="img-fluid" src="./img/datrungphuongnam.jpg?id=3" alt="">
+                            <div class="newIn__overlay"></div>
+                            <div class="newIn__play">
+                                <div>
+                                    <a href="/Frontend/movie-details.html?id=3"><i class="fa fa-play"></i></a>
+                                    <a href="#">read more</a>
+                                    <p class="date">Released: 7 Mar, 2017</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newIn__title">
+                            <h3>Đất rừng phương nam</h3>
+                            <div>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="newIn__img">
+                            <img class="img-fluid" src="./img/cualaivobau.jpg?id=4" alt="">
+                            <div class="newIn__overlay"></div>
+                            <div class="newIn__play">
+                                <div>
+                                    <a href="/Frontend/movie-details.html"><i class="fa fa-play"></i></a>
+                                    <a href="#">read more</a>
+                                    <p class="date">Released: 7 Mar, 2017</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newIn__title">
+                            <h3>Cua lại vợ bầu</h3>
+                            <div>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWTIME  -->
+
+    <!-- COMINGSOON -->
+    <section class="comingSoon section">
+        <div class="container">
+            <h2 class="title title-white">COMING SOON</h2>
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <p class="comingSoon__type">COMEDY, CRIME</p>
+                    <h3>The Hangover Part III</h3>
+                    <div class="comingSoon__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <span>
+                            <i class="fa fa-calendar-alt mx-3"></i>
+                            30 September 2020
+                        </span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eligendi reprehenderit distinctio
+                        ab libero harum. Incidunt eveniet fugiat dolor debitis!</p>
+                    <a href="#">MORE INFO <i class="fa fa-angle-right"></i></a>
+                </div>
+                <div class="col-6">
+                    <a class="my-video-links venobox" data-vbtype="video" href="https://youtu.be/iN2bQ2j7bGY">
+                        <div class="comingSoon__video">
+                            <img class="img-fluid" src="./img/slide-3-video.png" alt="">
+                            <i class="fa fa-play"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOVIELIST  -->
+    <section class="movieList section">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-9.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-8.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-11.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-13.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-12.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="movieList__item">
+                        <img class="img-fluid" src="./img/movie-14.jpg" alt="">
+                        <div class="movieList__overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CONTACT  -->
     <section class="contact section">
@@ -274,9 +452,16 @@
 
     <!-- MAIN JS  -->
     <script>
-        function setDestinationId(id) {
-            // Lưu giá trị id vào một biến toàn cục hoặc làm bất kỳ điều gì bạn muốn
-            window.destinationId = id;
+
+        window.onscroll = function () {
+            // Code tạo hiệu ứng xuất hiện thanh màu đen khi scroll
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                // 
+                document.getElementById("headerFixed").style.transform = "translate(-50%,0)";
+            }
+            else {
+                document.getElementById("headerFixed").style.transform = "translate(-50%,-100%)";
+            }
         }
     </script>
 </body>

@@ -34,155 +34,60 @@
         integrity="sha512-fm/DO7bC4SOvx5zF90RVAOX4Rgg+gZvO0Ti9v5F8s+FQ6lAyj0Q3ziVT7vaFm6dbbVfU/4JbYPQsNMEq8VEocw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"></script>
 </head>
-<header class="container-md">
-    <p class="text-right text-white mb-0">
-        <i class="fa-solid fa-phone"></i>
-        <span class="mx-3 border-right pr-2">012.345.6789</span>
-    </p>
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="#" style="color: #fff; font-size: 50px; letter-spacing: 5px; margin-left: 50px;">
-            CIW
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#movieNavBar"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">
-                <i class="fa fa-bars"></i>
-            </span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="movieNavBar">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active line">
-                    <a class="nav-link" href="#">TRANG CHỦ <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item line">
-                    <a class="nav-link" href="#">RẠP PHIM</a>
-                </li>
-                <li class="nav-item line">
-                    <a class="nav-link" href="#">LỊCH CHIẾU</a>
-                </li>
-                <li class="nav-item line">
-                    <a class="nav-link" href="#">ƯU ĐÃI</a>
-                </li>
-                <li class="nav-item line">
-                    <a class="nav-link" href="#">THÀNH VIÊN</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <body>
     <div class="movie-container">
         <!-- Thông tin bộ phim  -->
         <div class="movie-info">
-            <img id="movie-image" alt="image_path">
+            <img alt="image_path">
             <div class="movie-card">
-                <h2 id="movie-title">Avengers: Endgame</h2>
                 <div class="movie-description">
                     <p><strong>Tên Phim:</strong> <span id="title"></span></p>
                     <p><strong>Đạo diễn:</strong> <span id="director"></span></p>
                     <p><strong>Năm sản xuất:</strong> <span id="release-year"></span></p>
                     <p><strong>Thể loại:</strong> <span id="genre"></span></p>
                     <p><strong>Mô tả:</strong> <span id="description"></span></p>
-                    <button class="play-button">&#9654 Trailer</button>
+                    <button id="trailerButton" class="play-button">&#9654 Trailer</button>
                 </div>
             </div>
         </div>
         <!-- Lịch chiếu bộ phim-->
         <div class="movie-schedule">
             <label for="">Ngày chiếu: </label>
-            <select style="width: auto; font-size: 16px" name="Date" id="date">
-                <option value="">26/04/2019</option>
-                <option value="">27/04/2019</option>
-            </select>
+            <select style="width: auto; font-size: 16px" name="Date"></select>
 
-            <label for=""><br>Rạp chiếu: </label>
-            <div class="showtime">
-                <h3 onclick="toggleDropdown(this, 'dcine-dropdown')">Dcine</h3>
-                <div id="dcine-dropdown" class="dropdown">
-                    <div onclick="selectTime(this)">10:00 AM</div>
-                    <div onclick="selectTime(this)">1:30 PM</div>
-                    <div onclick="selectTime(this)">4:45 PM</div>
+            <div class="showtime" id="1">
+                <h3 onclick="toggleDropdown(this, 1)">Dcine</h3>
+                <div class="dropdown">
+                    <!-- Add dropdown content here -->
+                    <span onclick="selectTime(this, 1)">Time 1</span>
+                    <span onclick="selectTime(this, 1)">Time 2</span>
+                </div>
+            </div>
+            <div class="showtime" id="2">
+                <h3 onclick="toggleDropdown(this, 2)">CGV</h3>
+                <div class="dropdown">
+                    <!-- Add dropdown content here -->
+                    <span onclick="selectTime(this, 2)">Time 1</span>
+                    <span onclick="selectTime(this, 2)">Time 2</span>
+                </div>
+            </div>
+            <div class="showtime" id="3">
+                <h3 onclick="toggleDropdown(this, 3)">StarLight</h3>
+                <div class="dropdown">
+                    <!-- Add dropdown content here -->
+                    <span onclick="selectTime(this, 3)">Time 1</span>
+                    <span onclick="selectTime(this, 3)">Time 2</span>
                 </div>
             </div>
             
-            <div class="showtime">
-                <h3 onclick="toggleDropdown(this, 'cgv-dropdown')">CGV</h3>
-                <div id="cgv-dropdown" class="dropdown">
-                    <div onclick="selectTime(this)">11:15 AM</div>
-                    <div onclick="selectTime(this)">3:00 PM</div>
-                    <div onclick="selectTime(this)">6:30 PM</div>
-                </div>
-            </div>
             
-            <div class="showtime">
-                <h3 onclick="toggleDropdown(this, 'starlight-dropdown')">StarLight</h3>
-                <div id="starlight-dropdown" class="dropdown">
-                    <div onclick="selectTime(this)">12:45 PM</div>
-                    <div onclick="selectTime(this)">5:15 PM</div>
-                    <div onclick="selectTime(this)">8:45 PM</div>
-                </div>
-            </div>
-            
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    var urlParams = new URLSearchParams(window.location.search);
-                    var imageId = urlParams.get('id');
-        
-                    if (imageId) {
-                        // Lấy thẻ img và cập nhật đường dẫn ảnh dựa trên giá trị của id
-                        var movieImage = document.getElementById('movie-image');
-                        switch (imageId) {
-                            case '1':
-                                // Thay đổi đường dẫn ảnh nếu imageId là 1
-                                movieImage.src = '/Frontend/img/tải xuống.jpg';
-                                break;
-                            case '2':
-                                // Thay đổi đường dẫn ảnh nếu imageId là 2
-                                movieImage.src = '/Frontend/img/tải xuống (1).jpg';
-                                break;
-                            // Thêm các trường hợp khác nếu cần
-                            default:
-                                // Xử lý khi không có trường hợp nào trùng khớp
-                                break;
-                }
-        
-                        var apiUrl = 'http://localhost:8080/api/movie-details/' + imageId;
-        
-                        // fetch(apiUrl)
-                        //     .then(response => response.json())
-                        //     .then(movieDetails => {
-                        //         // Xử lý thông tin chi tiết của bộ phim ở đây
-                        //         console.log(movieDetails);
-                        //         document.getElementById('movie-title').innerText = movieDetails.title;
-                        //         // ...
-                        //     })
-                        //     .catch(error => {
-                        //         console.error('Error fetching movie details:', error);
-                        //     });
-                    }
-                });
-
-                function toggleDropdown(element, dropdownId) {
-                    var dropdown = document.getElementById(dropdownId);
-                    if (dropdown.style.display === 'block') {
-                        dropdown.style.display = 'none';
-                    } else {
-                        dropdown.style.display = 'block';
-                    }
-                }
-
-                function selectTime(selectedTime) {
-                    // Lấy giờ được chọn
-                    var selectedHour = selectedTime.innerText;
-
-                    // Chuyển hướng đến trang order.html với thời gian đã chọn
-                    window.location.href = 'datve.html?selectedTime=' + encodeURIComponent(selectedHour);
-                }
-            </script>
+           
             
         </div>
 
@@ -190,16 +95,238 @@
         <!-- Đánh giá bộ phim -->
         <div class="movie-comment">
             <h3>Đánh giá</h3>
-            <input type="text" placeholder="Viết bình luận ...">
-            <button>Gửi</button>
+            <input id="usernameInput" type="text" placeholder="Tên người dùng...">
+            <input id="ratingInput" type="number" placeholder="Điểm đánh giá...">
+            <input id="reviewInput" type="text" placeholder="Viết bình luận ...">
+            <button onclick="submitReview()">Gửi</button>
             <div class="show-comment">
-                <ul>
-                    <li><span>Người dùng: </span>Hoàng Văn A</li>
+                <ul id="commentList">
+                    <!-- Các đánh giá sẽ được thêm vào đây -->
                 </ul>
             </div>
         </div>
     </div>
 
+    <script defer>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        function toggleDropdown(element, cinemaId) {
+        var dropdownContent = $(element).next('.dropdown');
+        dropdownContent.toggleClass('show');
+        $('.dropdown').not(dropdownContent).removeClass('show');
+
+        if (cinemaId !== undefined && cinemaId !== null) {
+            // You can choose to do something with cinemaId in the dropdown if needed
+        }
+    }
+
+    function selectTime(element, cinemaId) {
+        var selectedTime = $(element).text();
+        alert('Selected Time: ' + selectedTime);
+
+        
+        window.location.href = `/Frontend/datve.html?${id}`;
+    }
+            document.addEventListener("DOMContentLoaded", function(){
+
+        // Lấy movieId từ đường dẫn trang
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = urlParams.get('id');
+
+        
+
+        // Function to fetch movie details from the API using jQuery
+        // Function to fetch movie details from the API using jQuery
+        function fetchMovieDetails(movieId) {
+            $.ajax({
+                url: `http://localhost:8080/api/movie-details/${movieId}`,
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    updateMovieCard(data, 'details');
+                },
+                error: function (error) {
+                    console.error('Error fetching movie details:', error);
+                }
+            });
+        }
+
+function fetchMovie(movieId) {
+    $.ajax({
+        url: `http://localhost:8080/api/movies/${movieId}`,
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            updateMovieCard(data, 'movie');
+        },
+        error: function (error) {
+            console.error('Error fetching movie details:', error);
+        }
+    });
+}
+
+// Function to update the movie card with details
+function updateMovieCard(details, type) {
+    console.log('Details from API:', details);
+
+    if (type === 'movie') {
+        $('#title').text(details.title || 'N/A');
+        $('#genre').text(details.genre || 'N/A');
+    } else if (type === 'details') {
+        $('#director').text(details.director || 'N/A');
+        $('#description').text(details.description || 'N/A');
+    }
+
+    if (details.releaseYear) {
+        $('#release-year').text(details.releaseYear);
+    } else {
+        $('#release-year').text('N/A');
+    }
+
+    // Add click event listener to the play button (you can customize this part)
+    $('#trailerButton').on('click', function () {
+        alert('Play Trailer: ' + details.trailerUrl);
+        // You may replace this with the actual logic to play the trailer
+    });
+}
+
+fetchMovieDetails(movieId);
+fetchMovie(movieId);
+
+})
+function fetchShowtimes() {
+    // Assuming your API endpoint returns an array of showtimes
+    $.ajax({
+        url: 'http://localhost:8080/api/cinemas/${movieId}/showtimes',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            // Call a function to update the select element with the extracted dates
+            updateDateSelect(data);
+        },
+        error: function (error) {
+            console.error('Error fetching showtimes:', error);
+        }
+    });
+}
+
+// Function to extract and update the select element with date options
+function updateDateSelect(showtimes) {
+    var selectElement = $('#date');
+
+    // Clear existing options
+    selectElement.empty();
+
+    // Extract unique dates from the showtimes
+    var uniqueDates = [...new Set(showtimes.map(showtime => new Date(showtime.startTime).toLocaleDateString()))];
+
+    // Add new options based on the extracted dates
+    uniqueDates.forEach(function (date) {
+        selectElement.append($('<option>', {
+            value: date,
+            text: date
+        }));
+    });
+}
+
+// Call the fetchShowtimes function when the page loads or whenever needed
+$(document).ready(function () {
+    fetchShowtimes();
+});
+
+function getCinemaShowtimes(cinemaId, containerId) {
+    // Assuming your API endpoint returns an array of showtimes for the given cinema ID
+    $.ajax({
+        url: `http://localhost:8080/api/cinemas/${cinemaId}/showtimes`,
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            // Call a function to update showtimes for the specific cinema
+            updateDropdown(containerId, data);
+        },
+        error: function (error) {
+            console.error(`Error fetching showtimes for cinema ${cinemaId}:`, error);
+        }
+    });
+}
+
+// Call the getCinemaShowtimes function for each cinema when the page loads or whenever needed
+$(document).ready(function () {
+    getCinemaShowtimes(1, 1);
+    getCinemaShowtimes(2, 2);
+    getCinemaShowtimes(3, 3);
+    getCinemaShowtimes(4, 4);
+});
+
+function updateDropdown(containerId, showtimes) {
+    var container = $('#' + containerId + ' .dropdown');
+    // Clear existing showtimes
+    container.empty();
+    // Add new showtimes
+    showtimes.forEach(function (showtime) {
+        // Extract only the hour and minute part from the startTime
+        var time = new Date(showtime.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        container.append($('<div>', {
+            text: time,
+            onclick: 'selectTime(this)'
+        }));
+    });
+}
+async function submitReview() {
+        const username = document.getElementById("usernameInput").value;
+        const rating = document.getElementById("ratingInput").value;
+        const reviewText = document.getElementById("reviewInput").value;
+
+        const reviewData = {
+            user_id: 1, // ID của người dùng
+            rating: parseInt(rating), // Điểm đánh giá
+            review: reviewText
+        };
+
+        const response = await fetch('http://localhost:8080/api/movies/${movieId}/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(reviewData),
+        });
+
+        if (response.ok) {
+            // Nếu đánh giá được gửi thành công, cập nhật giao diện người dùng
+            await loadComments();
+
+            // Xóa nội dung của ô nhập liệu
+            document.getElementById("usernameInput").value = '';
+            document.getElementById("ratingInput").value = '';
+            document.getElementById("reviewInput").value = '';
+        } else {
+            alert("Đã có lỗi xảy ra khi gửi đánh giá.");
+        }
+    }
+
+    async function loadComments() {
+        const response = await fetch('http://localhost:8080/api/movies/${movieId}/reviews');
+        const data = await response.json();
+
+        const commentList = document.getElementById("commentList");
+        commentList.innerHTML = ''; // Xóa tất cả các phần tử trong danh sách
+
+        data.forEach(comment => {
+            const newComment = document.createElement("li");
+            newComment.innerHTML = `<span>Người dùng: </span>${comment.user.username}, Điểm: ${comment.rating}, Bình luận: ${comment.review}`;
+            commentList.appendChild(newComment);
+        });
+    }
+
+    // Load danh sách bình luận khi trang được tải
+    loadComments();
+
+// The rest of your code remains unchanged
+
+
+    </script>
 </body>
 
 </html>
