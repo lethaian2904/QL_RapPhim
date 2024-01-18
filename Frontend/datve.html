@@ -29,8 +29,17 @@
     <link rel="stylesheet" href="./css/venobox.min.css">
 
     <style>
+        body {
 
-        
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            background: url(./img/slide-3-video.png);
+            background-position: center;
+            background-size: cover;
+            min-height: 100;
+            width: 100%;
+        }
 
         .containers {
 
@@ -57,80 +66,83 @@
             color: #ecf0f1;
         }
 
-        
+        .controls select,
+        .controls input[type="datetime-local"],
+        .controls select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
 
         .seat-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
+            perspective: 1000px;
         }
 
-        
+        .seat {
+            width: 50px;
+            height: 50px;
+            background-color: #bdc3c7;
+            border: 2px solid #34495e;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-      
-        body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
+        .seat.normal {
+            background-color: #bdc3c7;
+        }
 
-#seats {
-    margin-top: 20px;
-}
+        .seat.vip {
+            background-color: #f39c12;
+            color: #fff;
+        }
 
-.seat-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+        .seat.selected {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
 
-.seat {
-    width: 30px;
-    height: 30px;
-    background-color: #bdc3c7;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    user-select: none;
-}
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #3498db;
+            color: #ecf0f1;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
 
-.occupied {
-    background-color: #ccc;
-}
+        button:hover {
+            background-color: #2980b9;
+        }
 
-.selected {
-    background-color: #3498db;
-}
+        #movie {
+            background-color: #fff;
+            color: black;
+        }
 
-#seatInput {
-    padding: 8px;
-    margin-top: 10px;
-}
+        #datetime {
+            background-color: #fff;
+            color: black;
+        }
 
-button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+        #ticket-type {
+            background-color: #fff;
+            color: black;
+        }
 
-button:hover {
-    background-color: #2980b9;
-}
-
-
-
-
-        
+        .mess {
+            color: white;
+        }
     </style>
 
     <!-- MAIN CSS  -->
@@ -301,21 +313,22 @@ button:hover {
 
     <div class="containers">
         <h1 style="color: white;">Chọn ghế xem phim</h1>
-
-
         <div id="seats" class="seat-container"></div>
+        <p id="message" class="mess"></p>
         <p id="total-price" class="mess">Tổng giá: $0</p>
-        <label for="seatInput">Enter seat number:</label>
-        <input type="text" id="seatInput" placeholder="Enter seat number">
 
-        <!-- Add a button to display selected seats -->
-        <button id="showSelectedSeats">Show Selected Seats</button>
+        <!-- <label for="ticket-type" class="controls">
+            Chọn loại vé:
+            <select id="ticket-type">
+                <option value="normal">Vé thường - $10</option>
+                <option value="vip">Vé VIP - $15</option>
+            </select>
+        </label> -->
 
-        <!-- Add a button to book seats -->
-        <button id="bookSeats">Book Seats</button>
+        <button onclick="bookSeats()">Tiếp theo</button>
     </div>
 
-    
+
 
     <!-- FOOTER  -->
     <footer>
@@ -360,127 +373,112 @@ button:hover {
             </div>
         </div>
     </footer>
-    <div id="seats"></div>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const seatContainer = document.getElementById("seats");
+            const message = document.getElementById("message");
+            const totalPrice = document.getElementById("total-price");
 
+            // Gọi API để lấy thông tin danh sách ghế
+            fetch("http://localhost:8080/api/showtimes/1/available_seats")
+                .then(response => response.json())
+                .then(seatsData => {
+                    // Tạo danh sách ghế từ dữ liệu API
+                    createSeats(seatsData);
+                })
+                .catch(error => console.error("Lỗi khi lấy dữ liệu ghế:", error));
 
-<script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const seatContainer = document.getElementById("seats");
-    const seatInput = document.getElementById("seatInput");
-    const selectedSeatsButton = document.getElementById("showSelectedSeats");
-    const bookSeatsButton = document.getElementById("bookSeats");
-    const selectedSeats = [];
+            // Hàm tạo danh sách ghế từ dữ liệu API
+            function createSeats(seatsData) {
+                seatsData.forEach(seatData => {
+                    const seat = document.createElement("div");
+                    seat.classList.add("seat");
+                    seat.classList.add(getSeatType(seatData.rowNumber, seatData.seatNumber));
+                    seat.dataset.row = seatData.rowNumber;
+                    seat.dataset.seat = seatData.seatNumber;
 
-    // Gọi API để lấy thông tin danh sách ghế
-    fetch("http://localhost:8080/api/showtimes/1/available_seats")
-        .then(response => response.json())
-        .then(seatsData => {
-            // Sắp xếp ghế theo số ghế
-            seatsData.sort((a, b) => a.seatNumber - b.seatNumber);
-            // Tạo ghế thành một hàng
-            createSeats(seatsData);
-        })
-        .catch(error => console.error("Lỗi khi lấy dữ liệu ghế:", error));
+                    // Kiểm tra xem ghế có sẵn hay không
+                    if (seatData.isAvailable) {
+                        seat.addEventListener("click", function () {
+                            if (!this.classList.contains("occupied")) {
+                                this.classList.toggle("selected");
+                                updateMessage();
+                                updateTotalPrice();
+                            }
+                        });
+                    } else {
+                        seat.classList.add("occupied");
+                    }
 
-    function createSeats(seatsData) {
-        let currentRowNumber = null;
-        let seatRow = null;
-
-        seatsData.forEach(seatData => {
-            if (seatData.rowNumber !== currentRowNumber) {
-                // Nếu là ghế của hàng mới, tạo một hàng mới
-                seatRow = document.createElement("div");
-                seatRow.classList.add("seat-row");
-                seatContainer.appendChild(seatRow);
-                currentRowNumber = seatData.rowNumber;
-            }
-
-            const seat = document.createElement("div");
-            seat.classList.add("seat");
-            seat.dataset.seatNumber = seatData.seatNumber;
-
-            if (!seatData.isAvailable) {
-                seat.classList.add("occupied");
-            } else {
-                seat.addEventListener("click", function () {
-                    console.log("Seat clicked");
-                    seat.classList.toggle("selected");
-                    updateSelectedSeats();
+                    seatContainer.appendChild(seat);
                 });
             }
 
-            seat.textContent = seatData.seatNumber;
-            seatRow.appendChild(seat);
-        });
-    }
-
-
-
-    function updateSelectedSeats() {
-        selectedSeats.length = 0;
-        const selectedSeatNumber = seatInput.value;
-        selectedSeats.push({
-            seat: selectedSeatNumber
-        });
-    }
-
-    selectedSeatsButton.addEventListener("click", function () {
-        console.log("Selected seats:", selectedSeats);
-    });
-
-    bookSeatsButton.addEventListener("click", function () {
-    console.log("Book seats:", selectedSeats);
-
-    // Thêm logic đặt vé của bạn ở đây
-
-    // Lấy số ghế từ input
-    const selectedSeatNumber = seatInput.value;
-
-    // Lấy tham số id từ URL
-    const urlParams = new URLSearchParams(window.location.search);
-    // const id = urlParams.get('id');
-    const id = 1;
-
-    // Thêm số ghế vào URL
-    urlParams.set('selectedSeats', selectedSeatNumber);
-
-    // Tạo mới URL chỉ với tham số id và selectedSeats
-    const newUrl = `/Frontend/timkiem.html?id=${id}&selectedSeats=${selectedSeatNumber}`;
-
-    // Chuyển hướng đến trang /Frontend/timkiem.html với số ghế và id trong URL
-    window.location.href = newUrl;
-});
-
-
-});
-    fetch("http://localhost:8080/api/ticket_types")
-    .then(response => response.json())
-    .then(ticketTypesData => {
-        // Tìm loại vé có name là "ve"
-        const veTicket = ticketTypesData.find(ticketType => ticketType.name === "ve");
-
-        if (veTicket) {
-            // Lấy giá tiền
-            const veTicketPrice = veTicket.price;
-
-            // Hiển thị giá tiền trên thẻ có id là "total-price"
-            const totalPriceElement = document.getElementById("total-price");
-            if (totalPriceElement) {
-                totalPriceElement.textContent = `Tổng giá: $${veTicketPrice}`;
+            // Hàm cập nhật thông báo số ghế đã chọn
+            function updateMessage() {
+                const selectedSeats = document.querySelectorAll(".seat.selected");
+                message.innerText = `Bạn đã chọn ${selectedSeats.length} ghế`;
             }
-        } else {
-            console.log("Không tìm thấy loại vé có name là 've'");
-        }
-    })
-    .catch(error => console.error("Lỗi khi lấy dữ liệu loại vé:", error));
-</script>
-        
+
+            // Hàm cập nhật tổng giá vé
+            function updateTotalPrice() {
+                const selectedSeats = document.querySelectorAll('.seat.selected');
+
+                // Assume you have the cinema ID stored in a variable
+                const urlParams = new URLSearchParams(window.location.search);
+                const cinemaId = urlParams.get('cinemaId');
+
+                // Kiểm tra xem có ID không
+                if (cinemaId) {
+                    // Gọi API để lấy thông tin loại vé
+                    fetch("http://localhost:8080/api/ticket_types")
+                        .then(response => response.json())
+                        .then(ticketTypes => {
+                            // Tìm loại vé có name là 've' và cinemaId tương ứng
+                            const veTicketType = ticketTypes.find(ticketType => ticketType.name === 've' && ticketType.cinema.id === parseInt(cinemaId));
+
+                            // Kiểm tra xem có loại vé 've' không
+                            if (veTicketType) {
+                                // Lấy giá vé
+                                const veTicketPrice = veTicketType.price;
+
+                                // Tính toán tổng giá vé
+                                const numberOfSelectedSeats = selectedSeats.length;
+                                const totalPriceValue = veTicketPrice * numberOfSelectedSeats;
+
+                                // Hiển thị tổng giá vé
+                                totalPrice.textContent = `Tổng giá: $${totalPriceValue}`;
+                            } else {
+                                console.error("Không tìm thấy loại vé 've' cho rạp chiếu phim có ID là", cinemaId);
+                            }
+                        })
+                        .catch(error => console.error("Lỗi khi lấy dữ liệu loại vé:", error));
+                } else {
+                    console.error("Không tìm thấy ID Rạp trong URL");
+                }
+            }
+
+            // Hàm giả lập khi nhấn nút "Tiếp theo"
+            window.bookSeats = function () {
+                const selectedSeats = document.querySelectorAll('.seat.selected');
+                const selectedSeatNumbers = Array.from(selectedSeats).map(seat => seat.dataset.row + '-' + seat.dataset.seat);
+                alert(`Bạn đã chọn các ghế: ${selectedSeatNumbers.join(', ')}`);
+                // Thực hiện các bước tiếp theo, ví dụ: chuyển đến trang thanh toán
+            };
+            // window.location.href = "/Frontend/order.html?cinemaId=${cinemaId}";
+            // Hàm giả lập loại ghế dựa trên hàng và số ghế
+            function getSeatType(row, seatNumber) {
+                // Giả sử có một số điều kiện để xác định loại ghế
+                // Trong ví dụ này, nếu số ghế là chẵn, là ghế VIP
+                return seatNumber % 2 === 0 ? 'vip' : 'normal';
+            }
+
+        });
+    </script>
 
 
-            
-            
 
     <!-- Thư viện hỗ trợ  -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -514,7 +512,7 @@ button:hover {
             }
         }
     </script>
-
+    <script src="./js/datve.js"></script>
 </body>
 
 </html>

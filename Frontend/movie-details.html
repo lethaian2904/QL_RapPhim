@@ -44,7 +44,7 @@
     <div class="movie-container">
         <!-- Thông tin bộ phim  -->
         <div class="movie-info">
-            <img alt="image_path">
+            <img src="./img/Avengers_Endgame_bia_teaser.jpg" alt="image_path">
             <div class="movie-card">
                 <div class="movie-description">
                     <p><strong>Tên Phim:</strong> <span id="title"></span></p>
@@ -59,31 +59,19 @@
         <!-- Lịch chiếu bộ phim-->
         <div class="movie-schedule">
             <label for="">Ngày chiếu: </label>
-            <select style="width: auto; font-size: 16px" name="Date"></select>
+            <select style="width: auto; font-size: 16px" name="Date" id="date"></select>
 
             <div class="showtime" id="1">
-                <h3 onclick="toggleDropdown(this, 1)">Dcine</h3>
-                <div class="dropdown">
-                    <!-- Add dropdown content here -->
-                    <span onclick="selectTime(this, 1)">Time 1</span>
-                    <span onclick="selectTime(this, 1)">Time 2</span>
-                </div>
+                <h3 onclick="toggleDropdown(this, '1')">Dcine</h3>
+                <div class="dropdown"></div>
             </div>
             <div class="showtime" id="2">
-                <h3 onclick="toggleDropdown(this, 2)">CGV</h3>
-                <div class="dropdown">
-                    <!-- Add dropdown content here -->
-                    <span onclick="selectTime(this, 2)">Time 1</span>
-                    <span onclick="selectTime(this, 2)">Time 2</span>
-                </div>
+                <h3 onclick="toggleDropdown(this, '2')">CGV</h3>
+                <div class="dropdown"></div>
             </div>
             <div class="showtime" id="3">
-                <h3 onclick="toggleDropdown(this, 3)">StarLight</h3>
-                <div class="dropdown">
-                    <!-- Add dropdown content here -->
-                    <span onclick="selectTime(this, 3)">Time 1</span>
-                    <span onclick="selectTime(this, 3)">Time 2</span>
-                </div>
+                <h3 onclick="toggleDropdown(this, '3')">StarLight</h3>
+                <div class="dropdown"></div>
             </div>
             
             
@@ -108,26 +96,33 @@
     </div>
 
     <script defer>
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
-
         function toggleDropdown(element, cinemaId) {
-        var dropdownContent = $(element).next('.dropdown');
-        dropdownContent.toggleClass('show');
-        $('.dropdown').not(dropdownContent).removeClass('show');
+    // Assuming you have a class to hide/show the dropdown content
+    var dropdownContent = $(element).next('.dropdown');
+    dropdownContent.toggleClass('show'); // You might want to use your own CSS class for showing/hiding
 
-        if (cinemaId !== undefined && cinemaId !== null) {
-            // You can choose to do something with cinemaId in the dropdown if needed
-        }
+    // Close other dropdowns when one is opened (optional)
+    $('.dropdown').not(dropdownContent).removeClass('show');
+
+    // Check if cinemaId is not undefined or null before adding it to the URL
+    if (cinemaId !== undefined && cinemaId !== null) {
+        // Redirect to the ticket booking page with the selected cinema ID
+        window.location.href = `/Frontend/datve.html?cinemaId=${cinemaId}`;
     }
+}
 
-    function selectTime(element, cinemaId) {
-        var selectedTime = $(element).text();
-        alert('Selected Time: ' + selectedTime);
 
-        
-        window.location.href = `/Frontend/datve.html?${id}`;
-    }
+
+    function selectTime(element) {
+    var selectedTime = $(element).text();
+    alert('Selected Time: ' + selectedTime);
+
+    const cinemaId = parseInt(element.id); // Parse the ID to an integer
+
+    // Redirect to the ticket booking page with the selected cinema ID
+    window.location.href = `/Frontend/datve.html?cinemaId=${cinemaId}`;
+}
+
             document.addEventListener("DOMContentLoaded", function(){
 
         // Lấy movieId từ đường dẫn trang
@@ -193,7 +188,7 @@ function updateMovieCard(details, type) {
 
 fetchMovieDetails(movieId);
 fetchMovie(movieId);
-
+       
 })
 function fetchShowtimes() {
     // Assuming your API endpoint returns an array of showtimes
@@ -256,7 +251,6 @@ $(document).ready(function () {
     getCinemaShowtimes(1, 1);
     getCinemaShowtimes(2, 2);
     getCinemaShowtimes(3, 3);
-    getCinemaShowtimes(4, 4);
 });
 
 function updateDropdown(containerId, showtimes) {

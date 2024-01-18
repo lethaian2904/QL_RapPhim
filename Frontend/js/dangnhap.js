@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await axios.post("http://localhost:8080/api/auth/signin", formData, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "text/form-data",
                 },
             });
 

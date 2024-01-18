@@ -29,7 +29,7 @@
                     </div>
                     <div class="input-box">
                         <i class='bx bxs-envelope'></i>
-                        <input type="email" name="Email" placeholder="Email">
+                        <input id="email" type="email" name="Email" placeholder="Email">
                     </div>
 
                     <div class="input-box">
@@ -38,10 +38,10 @@
                     </div>
                     <div class="input-box">
                         <i class='bx bxs-lock-alt'></i>
-                        <input type="password" name="CPassword" placeholder="Nhập lại mật khẩu">
+                        <input type="password" id="cpassword" name="cpassword" placeholder="Nhập lại mật khẩu">
                     </div>
                     <div class="button">
-                        <input id="btn-signup" type="submit" value="Đăng ký" class="btn" onclick="validation()">
+                        <input id="btn-signup" type="submit" value="Đăng ký" class="btn">
                     </div>
                     <div class="group">
                         <span><a href="./forgot_password.html">Quên mật khẩu</a></span>
@@ -61,6 +61,22 @@
     <!-- IONIC JS  -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- ... (other head elements) ... -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- IONIC JS  -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- MAIN JS  -->
+    <script src="./js/register.js"></script>
+
+    <!-- ... (other body elements) ... -->
+
 
     <!-- MAIN JS  -->
     <script src="./js/register.js"></script>

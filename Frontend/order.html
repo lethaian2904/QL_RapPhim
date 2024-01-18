@@ -91,120 +91,45 @@
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const movieId = urlParams.get('id') === 'null' ? null : urlParams.get('id');
-        const selectedSeats = urlParams.get('selectedSeats');
-        const popcornQuantity = urlParams.get('popcornQuantity');
-        const drinkQuantity = urlParams.get('drinkQuantity');
-    
-        const userNameElement = document.getElementById("user_id");
-        const orderDateElement = document.getElementById("order_date");
-        const movieNameElement = document.getElementById("cinema_id");
-        const voucherCodeElement = document.getElementById("promotion_id");
-        const totalAmountElement = document.getElementById("total_amount");
-        const confirmationElement = document.getElementById("payment_confirmation");
-    
-        async function fetchMovieDetails(movieId) {
-            try {
-                const response = await fetch(`http://localhost:8080/api/movies/${movieId}`);
-                const data = await response.json();
-                movieNameElement.textContent = "Tên phim: " + data.title;
-            } catch (error) {
-                console.error('Error fetching movie details:', error);
-            }
-        }
-    
-        async function fetchTicketTypes() {
-            try {
-                const response = await fetch('http://localhost:8080/api/ticket_types');
-                const ticketTypes = await response.json();
-    
-                var priceVe = 50000;
-                var priceBap = 30000;
-                var priceNuoc = 20000;
-    
-                var totalAmount = priceVe * (movieId || 0) + priceBap * popcornQuantity + priceNuoc * drinkQuantity + 50000;
-                totalAmountElement.textContent = "Tổng cộng: " + totalAmount.toLocaleString() + "đ";
-            } catch (error) {
-                console.error('Error fetching ticket types:', error);
-            }
-        }
-    
-        async function fetchPromotions() {
-            try {
-                const response = await fetch('http://localhost:8080/api/promotions');
-                const promotions = await response.json();
-    
-                const currentDate = new Date();
-                const activePromotion = promotions.find(promotion => {
-                    const startDate = new Date(promotion.startDate);
-                    const endDate = new Date(promotion.endDate);
-                    return currentDate >= startDate && currentDate <= endDate;
-                });
-    
-                var priceVe = 50000;
-                var priceBap = 30000;
-                var priceNuoc = 20000;
-    
-                var totalAmount = priceVe * (movieId || 0) + priceBap * popcornQuantity + priceNuoc * drinkQuantity + 50000;
-    
-                if (activePromotion) {
-                    const discount = activePromotion.discount;
-                    totalAmount *= (1 - discount);
-                }
-    
-                document.getElementById("total_amount").textContent = "Tổng cộng: " + totalAmount.toLocaleString() + "đ";
-            } catch (error) {
-                console.error('Error fetching promotions:', error);
-            }
-        }
-    
+        var userName = "John Doe";
+        var orderDate = new Date().toLocaleString();
+        var movieName = "Tên phim 1";
+        var voucherCode = "ABC123";
+
+        var userNameElement = document.getElementById("user_id");
+        var orderDateElement = document.getElementById("order_date");
+        var movieNameElement = document.getElementById("cinema_id");
+        var voucherCodeElement = document.getElementById("promotion_id");
+        var totalAmountElement = document.getElementById("total_amount");
+        var confirmationElement = document.getElementById("payment_confirmation");
+
         function displayInformation() {
-            userNameElement.textContent = "Người đặt: " + movieId;
-            orderDateElement.textContent = "Số ghế đã chọn: " + selectedSeats;
-            voucherCodeElement.textContent = "Số lượng bắp: " + popcornQuantity + ", Số lượng nước: " + drinkQuantity;
-            fetchMovieDetails(movieId);
-            fetchTicketTypes();
-            fetchPromotions();
+            userNameElement.textContent = "Người đặt: " + userName;
+            orderDateElement.textContent = "Ngày đặt: " + orderDate;
+            movieNameElement.textContent = "Tên phim: " + movieName;
+            voucherCodeElement.textContent = "Voucher đã áp dụng: " + voucherCode;
+
+            var ticketPrice = 100000;
+            var numberOfTickets = 2;
+            var discountFromVoucher = 20000;
+            var totalAmount = ticketPrice * numberOfTickets - discountFromVoucher;
+            totalAmountElement.textContent = "Tổng cộng: " + totalAmount + "đ";
         }
-    
+
         function calculateTotal() {
-    // Assuming showtime_id is 1 and seat_id is obtained from selectedSeats
-    const showtime_id = 1;
-    const seat_id = selectedSeats;
+            var ticketPrice = 100000;
+            var numberOfTickets = 2;
+            var discountFromVoucher = 20000;
+            var totalAmount = ticketPrice * numberOfTickets - discountFromVoucher;
 
-    // Call the API to mark the seat as available
-    fetch(`http://localhost:8080/api/showtimes/${showtime_id}/seats/${seat_id}/mark-as-available`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Failed to mark seat as available. Status: ${response.status}`);
+            totalAmountElement.textContent = "Tổng cộng: " + totalAmount + "đ";
+
+            // Display the payment confirmation message
+            confirmationElement.style.display = "block";
+
+            window.location.href = "./order-details.html";
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data); // Log the response data if needed
-        confirmationElement.style.display = 'block';
-        
-        // Redirect to the new page after the API call is successful
-        window.location.href = './order-details.html';
-    })
-    .catch(error => {
-        console.error('Error marking seat as available:', error);
-        // Handle the error as needed
-    });
-}
-
-    
-        // Call fetchPromotions to calculate the total amount with promotions
-        fetchPromotions();
     </script>
-    
 </body>
-
 
 </html>
